@@ -8,7 +8,7 @@ packer {
 }
 
 source "docker" "ubuntu" {
-  image  = "https://hub.docker.com/_/ubuntu:xenial"
+  image  = "ubuntu:20.04"
   commit = true
 }
 
