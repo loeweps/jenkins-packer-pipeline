@@ -1,0 +1,15 @@
+FROM docker:25.0.3-cli
+ENV PACKER_VERSION=1.10.1
+ENV PACKER_SHA256SUM=e6cfde9514758a7f8684006b3c7f527411d1018a2162ab1376f8aa067546949d
+
+RUN apk add --update git bash wget openssl
+
+ADD https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip ./
+ADD https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_SHA256SUMS ./
+
+RUN sed -i '/.*linux_amd64.zip/!d' packer_${PACKER_VERSION}_SHA256SUMS
+RUN sha256sum -cs packer_${PACKER_VERSION}_SHA256SUMS
+RUN unzip packer_${PACKER_VERSION}_linux_amd64.zip -d /bin
+RUN rm -f packer_${PACKER_VERSION}_linux_amd64.zip
+
+ENTRYPOINT ["/bin/packer"]
