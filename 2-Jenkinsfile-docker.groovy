@@ -12,7 +12,12 @@ pipeline {
     PACKER_HOME_DIR = "${env.WORKSPACE_TMP}/.packer.d"
     PACKER_PLUGIN_PATH = "${env.WORKSPACE_TMP}/.packer.d/plugins"
     TMPDIR = "${env.WORKSPACE_TMP}"
-    DOCKER_HOST = "tcp://${DOCKER_HOST_IP}:2375"
+    DOCKER_HOST = "tcp://${DOCKER_HOST_IP}:2376"
+    ca="/certs/client/ca.pem"
+    cert="/certs/client/cert.pem"
+    key="/certs/client/key.pem"
+    DOCKER_TLS_VERIFY="1"
+    DOCKER_TLS_CERTDIR="/certs/client"
   }
 
   stages {
