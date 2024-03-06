@@ -13,6 +13,7 @@ pipeline {
     PACKER_PLUGIN_PATH = "${env.WORKSPACE_TMP}/.packer.d/plugins"
     TMPDIR = "${env.WORKSPACE_TMP}"
     DOCKER_HOST = "tcp://${DOCKER_HOST_IP}:2376"
+    DOCKER_TLS_CERTDIR=""
   }
 
   stages {
