@@ -10,11 +10,6 @@ packer {
 source "docker" "ubuntu" {
   image  = "ubuntu:20.04"
   commit = true
-  tls = true
-  tls_cert_path = "/certs/client"
-  tls_verify = true
-  docker_host = "tcp://docker:2376"
-
 }
 
 build {
@@ -22,5 +17,5 @@ build {
   sources = [
     "source.docker.ubuntu"
   ]
-  
+
 }
